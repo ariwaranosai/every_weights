@@ -1,7 +1,7 @@
 {
   "id": "sunday",
   "displayName": "周天",
-  "avatarUrl": "avatars/sunday.svg",
+  "avatarUrl": "avatars/sunday.jpg",
   "heightCm": 173,
   "records": [
     { "date": "2026-07-01", "weightKg": 84.2 }
