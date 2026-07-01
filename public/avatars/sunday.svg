@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="星期天 avatar">
+  <defs>
+    <linearGradient id="sun-bg" x1="20" x2="76" y1="8" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fef3c7"/>
+      <stop offset="1" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="48" fill="url(#sun-bg)"/>
+  <circle cx="48" cy="45" r="24" fill="#f59e0b"/>
+  <g stroke="#fef3c7" stroke-width="5" stroke-linecap="round">
+    <path d="M48 12v9"/>
+    <path d="M48 69v9"/>
+    <path d="M15 45h9"/>
+    <path d="M72 45h9"/>
+    <path d="m25 22 6 6"/>
+    <path d="m65 62 6 6"/>
+    <path d="m71 22-6 6"/>
+    <path d="m31 62-6 6"/>
+  </g>
+  <circle cx="39" cy="42" r="3" fill="#7c2d12"/>
+  <circle cx="57" cy="42" r="3" fill="#7c2d12"/>
+  <path d="M39 54c6 5 12 5 18 0" fill="none" stroke="#7c2d12" stroke-width="3" stroke-linecap="round"/>
+</svg>
