@@ -4,7 +4,7 @@
   "avatarUrl": "avatars/sunday.jpg",
   "heightCm": 173,
   "records": [
-    { "date": "2026-07-01", "weightKg": 84.2 }
+    { "date": "2026-07-01", "weightKg": 84.2 },
     { "date": "2026-07-03", "weightKg": 83.2 }
   ]
 }
