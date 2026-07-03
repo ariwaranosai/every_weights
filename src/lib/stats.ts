@@ -44,6 +44,16 @@ function toDate(value: string) {
   return new Date(`${value}T00:00:00Z`);
 }
 
+function toDateString(date: Date) {
+  return date.toISOString().slice(0, 10);
+}
+
+function addDays(date: Date, days: number) {
+  const next = new Date(date);
+  next.setUTCDate(next.getUTCDate() + days);
+  return next;
+}
+
 function findBaseline(records: WeightRecord[], target: Date) {
   let baseline: WeightRecord | null = null;
   for (const record of records) {
@@ -96,27 +106,34 @@ export function summarizePerson(person: PersonProfile): PersonSummary {
   };
 }
 
-export function buildChartRows(people: PersonProfile[], metric: ChartMetric) {
-  const dates = new Set<string>();
-  for (const person of people) {
-    for (const record of person.records) {
-      dates.add(record.date);
-    }
+export function buildChartRows(rangePeople: PersonProfile[], visiblePeople: PersonProfile[], metric: ChartMetric) {
+  const allDates = rangePeople.flatMap((person) => person.records.map((record) => record.date)).sort();
+  const firstDate = allDates[0];
+  const lastDate = allDates[allDates.length - 1];
+
+  if (!firstDate || !lastDate) {
+    return [];
   }
 
-  return [...dates].sort().map((date) => {
+  const rows: Record<string, number | string | null>[] = [];
+  for (let cursor = toDate(firstDate); cursor.getTime() <= toDate(lastDate).getTime(); cursor = addDays(cursor, 1)) {
+    const date = toDateString(cursor);
     const row: Record<string, number | string | null> = { date };
 
-    for (const person of people) {
-      const record = person.records.find((item) => item.date === date);
-      if (!record) {
-        row[person.id] = null;
-        continue;
+    for (const person of visiblePeople) {
+      let latestRecord: WeightRecord | null = null;
+      for (const record of person.records) {
+        if (record.date > date) {
+          break;
+        }
+        latestRecord = record;
       }
 
-      row[person.id] = getMetricValue(person, record, metric);
+      row[person.id] = latestRecord ? getMetricValue(person, latestRecord, metric) : null;
     }
 
-    return row;
-  });
+    rows.push(row);
+  }
+
+  return rows;
 }

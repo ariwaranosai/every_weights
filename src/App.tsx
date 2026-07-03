@@ -249,9 +249,9 @@ function App() {
 
   const chartData = useMemo(
     () => ({
-      weight: buildChartRows(peopleToShow, "weight"),
-      changePct: buildChartRows(peopleToShow, "changePct"),
-      bmi: buildChartRows(peopleToShow, "bmi"),
+      weight: buildChartRows(people, peopleToShow, "weight"),
+      changePct: buildChartRows(people, peopleToShow, "changePct"),
+      bmi: buildChartRows(people, peopleToShow, "bmi"),
     }),
     [peopleToShow],
   );
