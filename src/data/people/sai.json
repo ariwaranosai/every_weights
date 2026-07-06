@@ -5,6 +5,7 @@
   "heightCm": 175,
   "records": [
     { "date": "2026-07-01", "weightKg": 75.3 },
-    { "date": "2026-07-03", "weightKg": 75.0 }
+    { "date": "2026-07-03", "weightKg": 75.0 },
+    { "date": "2026-07-06", "weightKg": 74.8 }
   ]
 }
